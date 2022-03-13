@@ -1,23 +1,16 @@
 import Posts from './Posts';
+import SideBar from './SideBar'
+import Stories from './Stories';
 
 export default function Body(){
 
     return(
         <main class="corpo">
             <div class="esquerda">
-                <section class="stories">
-                    
-                </section>
-
-                <article class="posts">
-                    <Posts />
-                </article>
-
+                <Stories />
+                <Posts />
             </div>
-
-            <div class="sidebar">
-              
-            </div>
+            <SideBar />
         </main>
     )
 }
