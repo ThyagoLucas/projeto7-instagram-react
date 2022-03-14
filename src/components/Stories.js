@@ -19,9 +19,9 @@ let infoStories = [
 export default function Stories(){
 
     return(
-        <section class="stories">
-            { infoStories.map( storie => 
-            <Storie storie={storie} />)}
+        <section className="stories">
+            { infoStories.map((storie, index) => 
+            <Storie key ={index} storie={storie} />)}
             <Icon />
         </section>
     );    
@@ -31,18 +31,18 @@ function Storie(props){
     const {name, pic} = props.storie;
 
     return(
-    <div class="story">
-        <div class="imagem">
+    <div className="story">
+        <div className="imagem">
             <img src={pic} />
         </div>
-        <div class="usuario">{name}</div>
+        <div className="usuario">{name}</div>
     </div>
 
     );
 }
 function Icon(){
     return(
-        <div class="setinha">
+        <div className="setinha">
             <ion-icon name="chevron-forward-circle"></ion-icon>
         </div> 
     );

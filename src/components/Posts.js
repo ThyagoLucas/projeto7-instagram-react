@@ -1,29 +1,27 @@
 let posts = [
     {
+    nameUser: 'thyago',
+    pictureUser:'./assets/img/thyago.jpg',
+    infoPost: {type: 'video', src:'./assets/video/instav.mp4'},
+    likedByPic: './assets/img/nathanwpylestrangeplanet.svg',
+    likedByName: 'etebaldo',
+    likedOther: 'outras 101.523 pessoas'},
+    {
     nameUser: 'nasa',
     pictureUser:'./assets/img/logonasa.png',
     infoPost: {type: 'img', src:'./assets/img/nasa.png'},
     likedByPic:  './assets/img/respondeai.svg',
     likedByName: 'respondeai',
-    likedOther: 'outras 101.523 pessoas'},
-    {
-    nameUser: 'thyago',
-    pictureUser:'./assets/img/thyago.jpg',
-    infoPost: {type: 'video', src:'./assets/video/instav.mp4'},
-    likedByPic: './assets/img/respondeai.svg',
-    likedByName: 'respondeai',
-    likedOther: 'outras 101.523 pessoas'}
-  ];
+    likedOther: 'outras 91.503 pessoas'}
+];
   
 export default function Posts(){
 
     return (
-        posts.map(post => 
-            <Post post={post} />
-        )
-        
+        posts.map((post, index) => 
+            <Post key={index} post={post} />
+        ) 
     )
- 
 }
 
 function Post(props){
@@ -31,7 +29,7 @@ function Post(props){
     const {nameUser, pictureUser, infoPost, ...rest } = props.post;
 
     return(
-    <article class="post">
+    <article className="post">
         <TopPost nameUser={nameUser} picture={pictureUser}/>
         <ContentsPost data = {infoPost} />
         <BottomPost info = {rest}/>
@@ -41,49 +39,42 @@ function Post(props){
 }
 function TopPost (props){
     return(
-        <div class="topo">
-            <div class="usuario">
+        <div className="topo">
+            <div className="usuario">
                 <img src= {props.picture}/>
                 {props.nameUser}
             </div>
-            <div class="acoes">
+            <div className="acoes">
                 <ion-icon name="ellipsis-horizontal"></ion-icon>
             </div>
         </div>
-    )
-   
+    );
 }
 function ContentsPost (props){
     const {type, src} = props.data;
     
     if(type == 'img'){
        return (
-            <div class="conteudo">
+            <div className="conteudo">
                 <img src={src} />
-            </div>
-            
-        )
+            </div>  
+        );
     }else{
         return(
-            <div class="conteudo">
+            <div className="conteudo">
                 <video width="100%" autoPlay muted loop >
                     <source src={src} type="video/mp4"/>
                 </video>
             </div>
         )
-        
-
     }
-
-        
-
 }
 function BottomPost (props){
     const {likedByPic, likedByName, likedOther } = props.info;
     return(
 
-        <div class="fundo">
-            <div class="acoes">
+        <div className="fundo">
+            <div className="acoes">
                 <div>
                     <ion-icon name="heart-outline"></ion-icon>
                     <ion-icon name="chatbubble-outline"></ion-icon>
@@ -94,9 +85,9 @@ function BottomPost (props){
                 </div>
             </div>
 
-            <div class="curtidas">
+            <div className="curtidas">
                 <img src={likedByPic} />
-                <div class="texto">
+                <div className="texto">
                     Curtido por <strong>{likedByName}</strong> e <strong>{likedOther}</strong>
                 </div>
             </div>

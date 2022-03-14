@@ -7,15 +7,9 @@ function App(){
   return (
     <>
       <Top /> 
-      <Body/>
+      <Body />
     </>
   );
 }
 
 ReactDOM.render(App(), document.querySelector(".root"));
-
-
-
-
-
-

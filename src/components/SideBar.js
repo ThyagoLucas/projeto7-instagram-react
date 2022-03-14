@@ -18,20 +18,20 @@ const datasUSerLogged = {
 
 export default function SideBar(){
     return(
-        <div class="sidebar">
+        <div className="sidebar">
             <TopSideBar />
             <Suggestions />
+            <Copright />
         </div>
     )
 }
 
-
 function TopSideBar(){
 
     return(
-        <div class="usuario">
+        <div className="usuario">
             <img src={datasUSerLogged.pictureUser} alt="nomenome" />
-            <div class="texto">
+            <div className="texto">
                 <strong>{datasUSerLogged.profileName}</strong>
                 {datasUSerLogged.userName}
             </div>
@@ -41,45 +41,51 @@ function TopSideBar(){
     
 }
 function Suggestions(){
-
-      
+  
     return (
 
-        <div class="sugestoes">
-            <div class="titulo">
+        <div className="sugestoes">
+            <div className="titulo">
                 Sugestões para você
             <div>Ver tudo</div>
 
-            
             </div>
-            {infosSide.map( (item) =>
-            <Suggestion item ={item}  />
-            )}
-            
+            {infosSide.map((item, index) =>
+            <Suggestion key={index} item ={item}  />
+            )}  
         </div>
-    )
-    
+    ); 
 }
 function Suggestion(props){
     const {pictureUser, name} = props.item;
 
     return (
         <>
-        
-        <div class="sugestao">
-            <div class="usuario">
+        <div className="sugestao">
+            <div className="usuario">
                 <img src={pictureUser} alt={`Foto de usuario ${name} `}/>
-                <div class="texto">
-                    <div class="nome">{name}</div>
-                    <div class="razao">Segue você</div>
+                <div className="texto">
+                    <div className="nome">{name}</div>
+                    <div className="razao">Segue você</div>
                 </div>
             </div>
-            <div class="seguir">Seguir</div>
+            <div className="seguir">Seguir</div>
+        </div>
+        </> 
+    )
+}
+function Copright(){
+
+    return(
+        <> 
+        <div className="links">
+            Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes • Hashtags • Idioma
         </div>
 
+        <div className="copyright">
+            © 2021 INSTAGRAM DO FACEBOOK
+        </div>
         </>
-        
-    )
-
-
+       
+    );
 }
